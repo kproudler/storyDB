@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+    validates :username, persence: true
+    validates :password_digest, presence: { message: 'Password can\'t be blank' }
+
     def password=(password)
         self.password_digest = BCrypt::Password.create(password)
     end
